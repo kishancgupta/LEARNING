@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101722">
+    <title>Sorting &amp; Searching Lab</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Sorting and Searching Lab home">
+        <span class="brand-mark">S<span>/</span>S</span>
+        <span>ALGORITHM LAB <small>VISUAL LEARNING TOOL</small></span>
+      </a>
+      <span class="live-label"><span></span> INTERACTIVE CLASSROOM</span>
+    </header>
+
+    <main class="page">
+      <section class="intro">
+        <p class="eyebrow">COMPUTER SCIENCE · THE VISUAL EDITION</p>
+        <h1>See how algorithms <em>think.</em></h1>
+        <p class="intro-copy">Explore sorting and searching one decision at a time. Choose a dataset, run the algorithm, and step through every comparison.</p>
+      </section>
+
+      <section class="workspace" aria-label="Algorithm visualizer">
+        <aside class="controls panel">
+          <div class="panel-heading">
+            <span class="section-number">01</span>
+            <div><h2>Set up a run</h2><p>Pick an algorithm and your data.</p></div>
+          </div>
+
+          <label class="field-label" for="mode">ALGORITHM TYPE</label>
+          <div class="segmented" id="mode">
+            <button type="button" class="segment active" data-mode="sorting">Sorting</button>
+            <button type="button" class="segment" data-mode="searching">Searching</button>
+          </div>
+
+          <label class="field-label" for="algorithm">ALGORITHM</label>
+          <select id="algorithm" aria-label="Algorithm"></select>
+          <p class="complexity" id="complexity"></p>
+
+          <label class="field-label" for="dataset">STARTING DATA</label>
+          <select id="dataset" aria-label="Sample dataset">
+            <option value="random">Mixed numbers</option>
+            <option value="sorted">Sorted values</option>
+            <option value="nearly">Nearly sorted</option>
+            <option value="reversed">Reverse order</option>
+            <option value="duplicates">Duplicates</option>
+            <option value="custom">Custom values</option>
+          </select>
+          <textarea id="values" rows="3" aria-label="Comma-separated integer values"></textarea>
+          <p class="field-hint">Use comma-separated whole numbers (up to 30 for a clear visual).</p>
+
+          <div class="target-field" id="target-field" hidden>
+            <label class="field-label" for="target">VALUE TO FIND</label>
+            <input id="target" type="number" value="23">
+          </div>
+
+          <button type="button" class="button button-primary" id="run">▶ <span>Visualize algorithm</span></button>
+          <button type="button" class="button button-secondary" id="shuffle">↻ <span>New random data</span></button>
+          <p class="error-message" id="error" role="alert" hidden></p>
+        </aside>
+
+        <section class="visualizer panel">
+          <div class="visualizer-heading">
+            <div class="panel-heading">
+              <span class="section-number">02</span>
+              <div><h2>Watch it work</h2><p id="run-title">Ready when you are</p></div>
+            </div>
+            <button class="reset-button" id="reset" type="button" title="Reset visualization">↺ Reset</button>
+          </div>
+
+          <div class="chart-wrap">
+            <div class="chart" id="chart" aria-label="Algorithm visualization"></div>
+            <div class="chart-empty" id="chart-empty">Choose a sample to get started.</div>
+          </div>
+          <div class="legend">
+            <span><i class="legend-dot dot-compare"></i> Comparing</span>
+            <span><i class="legend-dot dot-pivot"></i> Pivot / middle</span>
+            <span><i class="legend-dot dot-sorted"></i> Found / sorted</span>
+          </div>
+
+          <div class="playback">
+            <div class="playback-buttons">
+              <button class="icon-button" type="button" id="previous" aria-label="Previous step" title="Previous step">←</button>
+              <button class="icon-button play-button" type="button" id="play" aria-label="Play" title="Play">▶</button>
+              <button class="icon-button" type="button" id="next" aria-label="Next step" title="Next step">→</button>
+            </div>
+            <div class="progress-area">
+              <div class="progress-caption"><span id="step-count">Step 0 of 0</span><span id="speed-label">1× speed</span></div>
+              <input id="progress" type="range" min="0" max="0" value="0" aria-label="Visualization step">
+              <div class="message" id="message" aria-live="polite">Your step-by-step explanation will appear here.</div>
+            </div>
+            <label class="speed-control">SPEED
+              <select id="speed" aria-label="Playback speed">
+                <option value="1200">0.5×</option>
+                <option value="700" selected>1×</option>
+                <option value="300">2×</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="stats">
+            <div class="stat-card"><span>COMPARISONS</span><strong id="comparisons">0</strong></div>
+            <div class="stat-card"><span>SWAPS</span><strong id="swaps">0</strong></div>
+            <div class="stat-card"><span>RESULT</span><strong id="result">—</strong></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="lesson panel">
+        <div class="lesson-icon">✳</div>
+        <div>
+          <p class="eyebrow">A LITTLE CONTEXT</p>
+          <h2 id="lesson-title">Every algorithm has a strategy.</h2>
+          <p id="lesson-copy">Select an algorithm to see what makes it unique. The highlighted values show exactly what it is examining at each step.</p>
+        </div>
+        <div class="lesson-complexity"><span>TIME COMPLEXITY</span><strong id="lesson-complexity">—</strong></div>
+      </section>
+
+      <footer>MADE FOR CURIOUS MINDS <span>·</span> GO + VANILLA JAVASCRIPT</footer>
+    </main>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
